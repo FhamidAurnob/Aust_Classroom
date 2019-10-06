@@ -272,7 +272,7 @@ public class SignupActivityTeacher extends AppCompatActivity {
 
     public void signupInputTeacher(View v) {
         if (haveNetwork()) {
-            if (!validateTeacherName() | !validateEmail() | !validatePhone() | !validatePassword() | !matchPassword() | !validateDepartment() | (item == "Department")) {
+            if (!validateTeacherName() | !validateEmail() | !validatePhone() | !validatePassword() | !matchPassword() | !validateDepartment()) {
                 Toast.makeText(SignupActivityTeacher.this, "Check all fields and try again", Toast.LENGTH_LONG).show();
                 return;
             }

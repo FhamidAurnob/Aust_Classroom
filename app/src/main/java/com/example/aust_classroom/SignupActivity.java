@@ -319,6 +319,8 @@ public class SignupActivity extends AppCompatActivity {
 
         if (haveNetwork()) {
                 if (!validateStudentName() | !validateStudentId() | !validateDepartment() | !validateYear() | !validateSemester() | !validateEmail() | !validatePhone() | !validatePassword() | !matchPassword()) {
+                    Toast.makeText(SignupActivity.this, "Check all fields and try again", Toast.LENGTH_LONG).show();
+
                     return;
                 } else {
                     Toast.makeText(SignupActivity.this, "Creating your account.. Please wait", Toast.LENGTH_LONG).show();
