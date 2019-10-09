@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.aust_classroom">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SignupActivityTeacher"></activity>
+
+        <activity android:name=".SignupActivityTeacher" />
         <activity android:name=".LoginActivityTeacher" />
         <activity android:name=".CseY2S2CgActivity" />
         <activity android:name=".CgpaYearSemWiseActivity" />
@@ -30,10 +35,12 @@
         <activity
             android:name=".HomeActivity2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EduNoticeActivity" /> <!-- <activity android:name=".HomeActivity" /> -->
+        <activity android:name=".EduNoticeActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".AnimActivity2"/>
+        <activity android:name=".AnimActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,9 +48,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

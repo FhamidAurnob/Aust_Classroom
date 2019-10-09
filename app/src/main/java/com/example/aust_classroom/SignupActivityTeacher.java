@@ -44,6 +44,8 @@ import io.grpc.Context;
 
 public class SignupActivityTeacher extends AppCompatActivity {
 
+    private long backPressedTime;
+    private Toast backToast;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
@@ -142,7 +144,19 @@ public class SignupActivityTeacher extends AppCompatActivity {
 
         departmentSpinner.setAdapter(dataAdapter);
 
-
+    }
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }
+        else {
+            backToast = Toast.makeText(SignupActivityTeacher.this, "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 
 

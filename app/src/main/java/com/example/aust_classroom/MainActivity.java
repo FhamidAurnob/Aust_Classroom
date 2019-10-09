@@ -20,6 +20,8 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    private long backPressedTime;
+    private Toast backToast;
     private ViewPager nSlideViewPager;
     private LinearLayout nDotLayout;
 
@@ -96,6 +98,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }
+        else {
+            backToast = Toast.makeText(MainActivity.this, "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 
     public void addDotsIndicator(int position)

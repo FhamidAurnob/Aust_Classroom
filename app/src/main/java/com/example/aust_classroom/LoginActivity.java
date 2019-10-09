@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private long backPressedTime;
+    private Toast backToast;
     private FirebaseAuth mAuth;
    // private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -52,6 +54,20 @@ public class LoginActivity extends AppCompatActivity {
             rel_lay_2.setVisibility(View.VISIBLE);
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }
+        else {
+            backToast = Toast.makeText(LoginActivity.this, "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +133,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (haveNetwork()) {
-                    Toast.makeText(LoginActivity.this,"Please wait...",Toast.LENGTH_SHORT).show();
                     final String studentEmail = studentLoginEmail.getEditText().getText().toString().trim();
                     final String Pass = loginPass.getEditText().getText().toString().trim();
                     if (studentEmail.isEmpty()) {
@@ -128,6 +143,8 @@ public class LoginActivity extends AppCompatActivity {
                         loginPass.setError("Fields can't be empty!");
                         return;
                     } else {
+                        Toast.makeText(LoginActivity.this,"Please wait...",Toast.LENGTH_SHORT).show();
+
                         mAuth.signInWithEmailAndPassword(studentEmail, Pass).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -182,6 +199,8 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 

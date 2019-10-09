@@ -45,6 +45,8 @@ import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
 
+    private long backPressedTime;
+    private Toast backToast;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
@@ -132,6 +134,20 @@ public class SignupActivity extends AppCompatActivity {
             }
         };*/
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        }
+        else {
+            backToast = Toast.makeText(SignupActivity.this, "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 
     private boolean validateDepartment(){
