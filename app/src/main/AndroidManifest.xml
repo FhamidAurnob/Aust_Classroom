@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".Cse2200SDActivity"></activity>
         <activity android:name=".SignupActivityTeacher" />
         <activity android:name=".LoginActivityTeacher" />
         <activity android:name=".CseY2S2CgActivity" />
@@ -38,9 +38,9 @@
         <activity android:name=".EduNoticeActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".AnimActivity2"/>
-        <activity android:name=".AnimActivity" >
+        <activity android:name=".MainActivity" />
+        <activity android:name=".AnimActivity2" />
+        <activity android:name=".AnimActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
